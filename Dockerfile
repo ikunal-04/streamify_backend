@@ -9,6 +9,8 @@ RUN /usr/bin/apt-get update && \
 
 WORKDIR /home/app
 
+EXPOSE 8000
+
 RUN npm i -g nodemon
 
 CMD nodemon index.js

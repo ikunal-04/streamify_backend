@@ -3,11 +3,16 @@ import express from 'express';
 import { Server as SocketIO } from 'socket.io';
 import cors from 'cors';
 import { spawn } from 'child_process';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 app.use(cors());
 const server = http.createServer(app);
 const io = new SocketIO(server);
+
+const port = process.env.PORT || 4000;
 
 let key = '';
 let ffmpegProcess;
@@ -88,4 +93,4 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(4000, () => console.log('server running on port 4000'));
+server.listen(port, () => console.log('server running on port 4000'));
